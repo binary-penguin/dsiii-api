@@ -1,21 +1,21 @@
 package com.example.dsiiiarchive.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.dsiiiarchive.domain.Boss;
+import com.example.dsiiiarchive.repositories.BossRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 public class BossController {
+    private final BossRepository bossRepository;
 
-    @GetMapping("/sayHi")
-    public Map<String, String> sayHi() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put("key", "value");
-        map.put("foo", "bar");
-        map.put("aa", "bb");
-        return map;
+
+    public BossController(BossRepository bossRepository) {
+        this.bossRepository = bossRepository;
+    }
+
+    @RequestMapping("/bosses")
+    public Iterable<Boss> getBosses() {
+        return bossRepository.findAll();
     }
 }

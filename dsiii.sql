@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2022 a las 03:34:52
+-- Tiempo de generación: 14-06-2022 a las 01:30:43
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -57,21 +57,40 @@ INSERT INTO `boss` (`id`, `name`, `image_url`, `health`, `description`, `lore`, 
 --
 
 CREATE TABLE `game` (
+  `id` int(11) NOT NULL PRIMARY KEY,
   `name` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `description` varchar(200) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `dev` varchar(10) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `composer` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `release_date` datetime DEFAULT NULL,
+  `release_date` date DEFAULT NULL,
   `metacritic` int(2) DEFAULT NULL,
-  `goty` tinyint(1) DEFAULT NULL
+  `goty` tinyint(1) DEFAULT NULL,
+  `sql_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `game`
 --
 
-INSERT INTO `game` (`name`, `description`, `dev`, `composer`, `release_date`, `metacritic`, `goty`) VALUES
-('Dark Souls III', 'Dark Souls III is an action role-playing game played in a third-person perspective, similar to previous games in the series. According to lead director and series creator Hidetaka Miyazaki, the game\'s', 'FromSoftwa', 'Yuka Kitamura', '2016-03-24 00:00:00', 89, 1);
+INSERT INTO `game` (`id`, `name`, `description`, `dev`, `composer`, `release_date`, `metacritic`, `goty`, `sql_date`) VALUES
+(1, 'Dark Souls III', 'Dark Souls III is an action role-playing game played in a third-person perspective, similar to previous games in the series. According to lead director and series creator Hidetaka Miyazaki, the game\'s', 'FromSoftwa', 'Yuka Kitamura', '2016-03-24', 89, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `hibernate_sequence`
+--
+
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `hibernate_sequence`
+--
+
+INSERT INTO `hibernate_sequence` (`next_val`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -108,6 +127,12 @@ ALTER TABLE `boss`
   ADD KEY `location_id` (`location_id`);
 
 --
+-- Indices de la tabla `game`
+--
+ALTER TABLE `game`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `location`
 --
 ALTER TABLE `location`
@@ -122,6 +147,12 @@ ALTER TABLE `location`
 --
 ALTER TABLE `boss`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `game`
+--
+ALTER TABLE `game`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `location`
