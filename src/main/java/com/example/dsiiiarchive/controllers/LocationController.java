@@ -19,13 +19,15 @@ public class LocationController {
     }
 
     @CrossOrigin
+    @RequestMapping("/location/{id}")
+    public Optional<Location> getLocation(@PathVariable long id) { return locationRepository.findById(id);}
+
+    @CrossOrigin
     @RequestMapping("/locations")
     public Iterable<Location> getAllLocations() {
         return locationRepository.findAll();
     }
 
-    @CrossOrigin
-    @RequestMapping("/location/{id}")
-    public Optional<Location> getLocation(@PathVariable long id) { return locationRepository.findById(id);}
+
 }
 

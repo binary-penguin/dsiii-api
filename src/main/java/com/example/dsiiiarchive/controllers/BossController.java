@@ -19,14 +19,16 @@ public class BossController {
     }
 
     @CrossOrigin
+    @RequestMapping("/boss/{id}")
+    public Optional<Boss> getBoss(@PathVariable long id) {
+        return bossRepository.findById(id);
+    }
+
+    @CrossOrigin
     @RequestMapping("/bosses")
     public Iterable<Boss> getBosses() {
         return bossRepository.findAll();
     }
 
-    @CrossOrigin
-    @RequestMapping("/boss/{id}")
-    public Optional<Boss> getBoss(@PathVariable long id) {
-        return bossRepository.findById(id);
-    }
+
 }
