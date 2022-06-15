@@ -40,7 +40,7 @@ public class LocationController {
             response.put("message", "Location Updated Successfully!");
             return response;
         }
-        response.put("message", "Location Not Found with Id: " + id);
+        response.put("message", "Location Not Found with Id: " + id + "");
         return response;
     }
 
