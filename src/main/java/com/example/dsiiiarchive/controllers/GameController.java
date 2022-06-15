@@ -3,6 +3,7 @@ package com.example.dsiiiarchive.controllers;
 import com.example.dsiiiarchive.domain.Game;
 import com.example.dsiiiarchive.repositories.GameRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,13 +19,13 @@ public class GameController {
 
 
     @CrossOrigin
-    @RequestMapping("/gameinfo")
+    @GetMapping("/gameinfo")
     public Game getGameInfo() {
         return gameRepository.findAll().iterator().next();
     }
 
     @CrossOrigin
-    @RequestMapping("/hi")
+    @GetMapping("/hi")
     public String hi() {
         return "yoooo hi";
     }

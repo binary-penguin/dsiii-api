@@ -1,11 +1,9 @@
 package com.example.dsiiiarchive.controllers;
 
 import com.example.dsiiiarchive.domain.Boss;
+import com.example.dsiiiarchive.domain.Location;
 import com.example.dsiiiarchive.repositories.BossRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -19,13 +17,20 @@ public class BossController {
     }
 
     @CrossOrigin
-    @RequestMapping("/boss/{id}")
+    @GetMapping("/boss/{id}")
     public Optional<Boss> getBoss(@PathVariable long id) {
         return bossRepository.findById(id);
     }
 
     @CrossOrigin
-    @RequestMapping("/bosses")
+    @PostMapping(path = "/bosses")
+    public String addBoss(@RequestBody Boss boss) {
+        bossRepository.save(boss);
+        return "Boss added!";
+    }
+
+    @CrossOrigin
+    @GetMapping("/bosses")
     public Iterable<Boss> getBosses() {
         return bossRepository.findAll();
     }
