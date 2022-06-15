@@ -26,7 +26,7 @@ public class GameController {
     @CrossOrigin
     @RequestMapping("/hi")
     public String hi() {
-        return "hi";
+        return "yoooo hi";
     }
 
 }
