@@ -2,6 +2,7 @@ package com.example.dsiiiarchive.controllers;
 
 import com.example.dsiiiarchive.domain.Boss;
 import com.example.dsiiiarchive.repositories.BossRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public class BossController {
     }
 
     @RequestMapping("/bosses")
+    @CrossOrigin(origins = "*")
     public Iterable<Boss> getBosses() {
         return bossRepository.findAll();
     }
