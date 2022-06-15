@@ -15,8 +15,8 @@ public class BossController {
         this.bossRepository = bossRepository;
     }
 
+    @CrossOrigin
     @RequestMapping("/bosses")
-    @CrossOrigin(origins = "*")
     public Iterable<Boss> getBosses() {
         return bossRepository.findAll();
     }
