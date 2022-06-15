@@ -2,6 +2,7 @@ package com.example.dsiiiarchive.controllers;
 
 import com.example.dsiiiarchive.domain.Game;
 import com.example.dsiiiarchive.repositories.GameRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +17,13 @@ public class GameController {
     }
 
 
+    @CrossOrigin
     @RequestMapping("/gameinfo")
     public Game getGameInfo() {
         return gameRepository.findAll().iterator().next();
     }
 
+    @CrossOrigin
     @RequestMapping("/hi")
     public String hi() {
         return "hi";
