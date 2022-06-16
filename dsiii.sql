@@ -65,7 +65,6 @@ CREATE TABLE `game` (
   `release_date` date DEFAULT NULL,
   `metacritic` int(2) DEFAULT NULL,
   `goty` tinyint(1) DEFAULT NULL,
-  `sql_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --

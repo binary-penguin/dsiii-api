@@ -3,6 +3,7 @@ package com.example.dsiiiarchive.controllers;
 import com.example.dsiiiarchive.domain.Boss;
 import com.example.dsiiiarchive.domain.Location;
 import com.example.dsiiiarchive.repositories.BossRepository;
+import com.example.dsiiiarchive.repositories.LocationRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -12,10 +13,12 @@ import java.util.Optional;
 @RestController
 public class BossController {
     private final BossRepository bossRepository;
+    private final LocationRepository locationRepository;
 
 
-    public BossController(BossRepository bossRepository) {
+    public BossController(BossRepository bossRepository, LocationRepository locationRepository) {
         this.bossRepository = bossRepository;
+        this.locationRepository = locationRepository;
     }
 
     @CrossOrigin
@@ -56,10 +59,20 @@ public class BossController {
     }
 
     @CrossOrigin
-    @PostMapping("/bosses")
-    public String addBoss(@RequestBody Boss boss) {
-        bossRepository.save(boss);
-        return "Boss added!";
+    @PostMapping("/bosses/location/{id}")
+    public Map<String, String> addBoss(@PathVariable long id, @RequestBody Boss boss) {
+        Optional<Location> location = locationRepository.findById(id);
+        Map<String, String> response= new HashMap<>();
+
+        if (location.isPresent()) {
+            boss.setLocation(location.get());
+            bossRepository.save(boss);
+            response.put("message", "Boss Added Successfully!");
+            return response;
+        }
+        response.put("message", "Location invalid!");
+        return response;
+
     }
 
     @CrossOrigin
