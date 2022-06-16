@@ -1,7 +1,7 @@
 
 # dsiii-api
 
-The unofficial, funny and educative dsiii-api, you can ask for CRUD operations with some bosses and locations of the game.
+The unofficial, funny and educative Dark Souls III API, you can ask for CRUD operations with some bosses and locations of the game.
 
 This RESTful API was made as a project of my Spring Boot Learning Path.
 
